@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Agent, AgentPermission } from "@/types";
 import { stripeService } from "@/services/stripeService";
 import { Loader2, HelpCircle } from "lucide-react";
@@ -14,6 +13,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import PromptTips from "./agent/PromptTips";
+import PermissionsSelector from "./agent/PermissionsSelector";
 
 interface AgentSetupProps {
   onAgentCreated: (agent: Agent) => void;
@@ -28,14 +29,6 @@ const AgentSetup = ({ onAgentCreated }: AgentSetupProps) => {
     "approve_payouts",
   ]);
   const [showPromptTips, setShowPromptTips] = useState(false);
-
-  const handlePermissionChange = (permission: AgentPermission) => {
-    if (permissions.includes(permission)) {
-      setPermissions(permissions.filter((p) => p !== permission));
-    } else {
-      setPermissions([...permissions, permission]);
-    }
-  };
 
   const handleCreateAgent = async () => {
     if (!name) return;
@@ -81,17 +74,7 @@ const AgentSetup = ({ onAgentCreated }: AgentSetupProps) => {
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
-        {showPromptTips && (
-          <div className="bg-accent/50 p-3 rounded-md mb-4 text-sm animate-fade-in">
-            <h3 className="font-medium mb-1">Tips for Effective Agent Creation:</h3>
-            <ul className="list-disc pl-5 space-y-1">
-              <li>Use descriptive names that reflect the agent's purpose</li>
-              <li>Set realistic budgets based on expected task volume</li>
-              <li>Only enable permissions the agent truly needs</li>
-              <li>Start with smaller budgets and increase as needed</li>
-            </ul>
-          </div>
-        )}
+        {showPromptTips && <PromptTips />}
 
         <div className="space-y-2">
           <Label htmlFor="agent-name" className="flex items-center gap-2">
@@ -137,45 +120,10 @@ const AgentSetup = ({ onAgentCreated }: AgentSetupProps) => {
           />
         </div>
         
-        <div className="space-y-2">
-          <Label className="flex items-center gap-2">
-            Agent Permissions
-            <Tooltip>
-              <TooltipTrigger>
-                <HelpCircle className="h-4 w-4 text-muted-foreground" />
-              </TooltipTrigger>
-              <TooltipContent>
-                <p className="w-64">Only grant permissions that this agent needs to function</p>
-              </TooltipContent>
-            </Tooltip>
-          </Label>
-          <div className="space-y-2 bg-background/50 p-3 rounded-md">
-            <div className="flex items-center space-x-2">
-              <Checkbox 
-                id="create-mission" 
-                checked={permissions.includes("create_mission")}
-                onCheckedChange={() => handlePermissionChange("create_mission")}
-              />
-              <Label htmlFor="create-mission" className="text-sm font-normal cursor-pointer">Create Missions</Label>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Checkbox 
-                id="create-charge" 
-                checked={permissions.includes("create_charge")}
-                onCheckedChange={() => handlePermissionChange("create_charge")}
-              />
-              <Label htmlFor="create-charge" className="text-sm font-normal cursor-pointer">Create Charges</Label>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Checkbox 
-                id="approve-payouts" 
-                checked={permissions.includes("approve_payouts")}
-                onCheckedChange={() => handlePermissionChange("approve_payouts")}
-              />
-              <Label htmlFor="approve-payouts" className="text-sm font-normal cursor-pointer">Approve Payouts</Label>
-            </div>
-          </div>
-        </div>
+        <PermissionsSelector 
+          permissions={permissions} 
+          onChange={setPermissions} 
+        />
       </CardContent>
       <CardFooter>
         <Button 
