@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Integrations from "./pages/Integrations";
 import Debug from "./pages/Debug";
+import Knowledge from "./pages/Knowledge";
 import DebugBadge from "./components/DebugBadge";
 
 const queryClient = new QueryClient({
@@ -29,6 +30,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/integrations" element={<Integrations />} />
           <Route path="/debug" element={<Debug />} />
+          <Route path="/knowledge" element={<Knowledge />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
