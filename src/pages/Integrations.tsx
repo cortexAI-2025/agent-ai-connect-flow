@@ -3,7 +3,9 @@ import { useState } from "react";
 import { GitHubSyncStatus } from "@/types";
 import GitHubConnect from "@/components/github/GitHubConnect";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import DatabaseTab from "@/components/debug/DatabaseTab";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Database, LinkIcon, ExternalLink } from "lucide-react";
 
 // Données simulées pour la démonstration
 const mockGitHubRepos = [
@@ -100,7 +102,55 @@ const Integrations = () => {
             />
           </TabsContent>
           <TabsContent value="database" className="animate-fade-in">
-            <DatabaseTab />
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Database className="h-5 w-5" />
+                  Supabase Integration
+                </CardTitle>
+                <CardDescription>
+                  Connectez votre propre base de données Supabase pour étendre les fonctionnalités de votre application
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="bg-muted/30 rounded-lg p-6">
+                  <h3 className="text-lg font-medium mb-3">Pourquoi Supabase?</h3>
+                  <ul className="space-y-2 text-sm list-disc pl-5">
+                    <li>Base de données PostgreSQL complète</li>
+                    <li>Authentification des utilisateurs</li>
+                    <li>Stockage de fichiers</li>
+                    <li>Fonctions Edge et API</li>
+                    <li>Interface d'administration simple</li>
+                  </ul>
+                </div>
+                
+                <div className="bg-muted/30 rounded-lg p-6">
+                  <h3 className="text-lg font-medium mb-3">Comment connecter Supabase</h3>
+                  <p className="text-sm mb-4">
+                    Lovable offre une intégration native avec Supabase. Pour l'activer:
+                  </p>
+                  <ol className="space-y-2 text-sm list-decimal pl-5 mb-6">
+                    <li>Cliquez sur le menu Supabase en haut à droite de l'interface</li>
+                    <li>Connectez-vous à votre compte Supabase</li> 
+                    <li>Sélectionnez votre projet ou créez-en un nouveau</li>
+                    <li>Suivez les instructions pour compléter l'intégration</li>
+                  </ol>
+                  
+                  <div className="flex justify-center gap-4 mt-4">
+                    <Button className="gap-2">
+                      <LinkIcon className="h-4 w-4" />
+                      Connecter Supabase
+                    </Button>
+                    <Button variant="outline" className="gap-2" asChild>
+                      <a href="https://docs.lovable.dev/integrations/supabase/" target="_blank" rel="noopener noreferrer">
+                        Documentation
+                        <ExternalLink className="h-4 w-4" />
+                      </a>
+                    </Button>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </TabsContent>
           <TabsContent value="other" className="animate-fade-in">
             <div className="bg-muted/50 rounded-lg p-12 text-center">
