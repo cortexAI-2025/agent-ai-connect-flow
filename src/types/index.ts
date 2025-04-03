@@ -36,3 +36,20 @@ export interface AIWorkPayResponse {
   error?: string;
   data?: any;
 }
+
+export interface GitHubRepo {
+  id: string;
+  name: string;
+  fullName: string;
+  url: string;
+  description?: string;
+  isPrivate: boolean;
+  lastSynced?: string;
+  isSyncing?: boolean;
+}
+
+export interface GitHubSyncStatus {
+  connected: boolean;
+  lastSynced?: string;
+  repos?: GitHubRepo[];
+}

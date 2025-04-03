@@ -7,6 +7,9 @@ import AutomationCenter from "@/components/AutomationCenter";
 import { Agent, Mission } from "@/types";
 import { mockAgents, mockMissions } from "@/lib/mocks";
 import { AnimatedLogo } from "@/components/AnimatedLogo";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import { Github } from "lucide-react";
 
 const Index = () => {
   const [agent, setAgent] = useState<Agent | null>(null);
@@ -33,7 +36,15 @@ const Index = () => {
 
   return (
     <div className="container py-6 min-h-screen">
-      <header className="text-center mb-8 animate-fade-in">
+      <header className="text-center mb-8 animate-fade-in relative">
+        <div className="absolute right-0 top-0">
+          <Button variant="outline" size="sm" asChild className="flex items-center gap-2">
+            <Link to="/integrations">
+              <Github className="h-4 w-4" />
+              <span>GitHub Sync</span>
+            </Link>
+          </Button>
+        </div>
         <AnimatedLogo />
         <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-600 via-indigo-500 to-blue-500 bg-clip-text text-transparent">
           Agent AI Connect Flow
