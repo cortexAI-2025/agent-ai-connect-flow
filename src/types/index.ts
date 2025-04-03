@@ -8,7 +8,7 @@ export interface Agent {
   permissions: AgentPermission[];
 }
 
-export type AgentPermission = 'create_charge' | 'approve_payouts' | 'create_mission';
+export type AgentPermission = 'create_charge' | 'approve_payouts' | 'create_mission' | 'manage_workers' | 'view_analytics';
 
 export interface Mission {
   id: string;

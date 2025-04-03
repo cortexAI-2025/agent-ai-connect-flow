@@ -57,6 +57,22 @@ const PermissionsSelector = ({ permissions, onChange }: PermissionsSelectorProps
           />
           <Label htmlFor="approve-payouts" className="text-sm font-normal cursor-pointer">Approve Payouts</Label>
         </div>
+        <div className="flex items-center space-x-2">
+          <Checkbox 
+            id="manage-workers" 
+            checked={permissions.includes("manage_workers")}
+            onCheckedChange={() => handlePermissionChange("manage_workers")}
+          />
+          <Label htmlFor="manage-workers" className="text-sm font-normal cursor-pointer">Manage Workers</Label>
+        </div>
+        <div className="flex items-center space-x-2">
+          <Checkbox 
+            id="view-analytics" 
+            checked={permissions.includes("view_analytics")}
+            onCheckedChange={() => handlePermissionChange("view_analytics")}
+          />
+          <Label htmlFor="view-analytics" className="text-sm font-normal cursor-pointer">View Analytics</Label>
+        </div>
       </div>
     </div>
   );
