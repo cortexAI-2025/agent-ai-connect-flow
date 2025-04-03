@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -11,6 +12,7 @@ import Knowledge from "./pages/Knowledge";
 import DebugBadge from "./components/DebugBadge";
 import Documentation from "./pages/Documentation";
 import DocumentationLink from "./components/DocumentationLink";
+import Contact from "./pages/Contact";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -34,6 +36,7 @@ function App() {
             <Route path="/knowledge" element={<Knowledge />} />
             <Route path="/debug" element={<Debug />} />
             <Route path="/documentation" element={<Documentation />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <DocumentationLink />
