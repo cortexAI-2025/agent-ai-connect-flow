@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import AgentSetup from "@/components/AgentSetup";
@@ -9,7 +8,7 @@ import { mockAgents, mockMissions } from "@/lib/mocks";
 import { AnimatedLogo } from "@/components/AnimatedLogo";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Github, BookOpen, FileText, Mail } from "lucide-react";
+import { Github, BookOpen } from "lucide-react";
 
 const Index = () => {
   const [agent, setAgent] = useState<Agent | null>(null);
@@ -39,12 +38,6 @@ const Index = () => {
       <header className="text-center mb-8 animate-fade-in relative">
         <div className="absolute right-0 top-0 flex gap-2">
           <Button variant="outline" size="sm" asChild className="flex items-center gap-2">
-            <Link to="/documentation">
-              <FileText className="h-4 w-4" />
-              <span>Documentation</span>
-            </Link>
-          </Button>
-          <Button variant="outline" size="sm" asChild className="flex items-center gap-2">
             <Link to="/knowledge">
               <BookOpen className="h-4 w-4" />
               <span>Project Knowledge</span>
@@ -54,12 +47,6 @@ const Index = () => {
             <Link to="/integrations">
               <Github className="h-4 w-4" />
               <span>GitHub Sync</span>
-            </Link>
-          </Button>
-          <Button variant="outline" size="sm" asChild className="flex items-center gap-2">
-            <Link to="/contact">
-              <Mail className="h-4 w-4" />
-              <span>Contact</span>
             </Link>
           </Button>
         </div>
