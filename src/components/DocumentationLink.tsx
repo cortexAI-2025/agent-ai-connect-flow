@@ -2,9 +2,14 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { FileText } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const DocumentationLink: React.FC = () => {
+  const location = useLocation();
+  
+  // Ne pas afficher le lien sur la page de documentation
+  if (location.pathname === "/documentation") return null;
+
   return (
     <div className="fixed bottom-4 right-4 z-50">
       <Button asChild variant="secondary" className="shadow-lg flex items-center gap-2">
