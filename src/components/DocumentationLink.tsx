@@ -7,7 +7,7 @@ import { Link, useLocation } from "react-router-dom";
 const DocumentationLink: React.FC = () => {
   const location = useLocation();
   
-  // Ne pas afficher les liens sur les pages de documentation et de contact
+  // Don't display links on documentation and contact pages
   if (location.pathname === "/documentation" || location.pathname === "/contact") return null;
 
   return (

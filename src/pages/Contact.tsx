@@ -15,16 +15,16 @@ const Contact = () => {
         <header className="mb-8">
           <h1 className="text-3xl font-bold">Contact</h1>
           <p className="text-muted-foreground">
-            Besoin d'aide ou d'informations supplémentaires ? Contactez-nous.
+            Need help or additional information? Contact us.
           </p>
         </header>
 
         <div className="grid gap-6 md:grid-cols-2">
           <Card>
             <CardHeader>
-              <CardTitle>Par Email</CardTitle>
+              <CardTitle>By Email</CardTitle>
               <CardDescription>
-                Notre équipe est disponible pour répondre à vos questions.
+                Our team is available to answer your questions.
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -38,7 +38,7 @@ const Contact = () => {
                 </a>
               </div>
               <p className="text-sm text-muted-foreground">
-                Nous nous efforçons de répondre à tous les messages dans un délai de 24 heures ouvrées.
+                We strive to respond to all messages within 24 business hours.
               </p>
             </CardContent>
           </Card>
@@ -47,16 +47,16 @@ const Contact = () => {
             <CardHeader>
               <CardTitle>Documentation</CardTitle>
               <CardDescription>
-                Consultez notre documentation complète pour en savoir plus sur nos services.
+                Check out our comprehensive documentation to learn more about our services.
               </CardDescription>
             </CardHeader>
             <CardContent>
               <p className="mb-4 text-sm text-muted-foreground">
-                Notre documentation contient toutes les informations dont vous avez besoin pour utiliser efficacement notre plateforme.
+                Our documentation contains all the information you need to effectively use our platform.
               </p>
               <Button asChild>
                 <Link to="/documentation" className="flex items-center gap-2">
-                  Consulter la documentation
+                  View Documentation
                 </Link>
               </Button>
             </CardContent>
@@ -67,7 +67,7 @@ const Contact = () => {
           <Button variant="outline" size="sm" asChild className="flex items-center gap-2">
             <Link to="/">
               <ArrowLeft className="h-4 w-4" />
-              <span>Retour à l'accueil</span>
+              <span>Back to Home</span>
             </Link>
           </Button>
         </div>
