@@ -17,6 +17,7 @@ interface MissionCreatorProps {
 const MissionCreator = ({ agent, onMissionCreated }: MissionCreatorProps) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [instructions, setInstructions] = useState("");
   const [reward, setReward] = useState(10);
   const [metadataUrl, setMetadataUrl] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -35,6 +36,7 @@ const MissionCreator = ({ agent, onMissionCreated }: MissionCreatorProps) => {
           reward,
           metadata: {
             url: metadataUrl,
+            instructions: instructions,
           },
         }
       );
@@ -44,6 +46,7 @@ const MissionCreator = ({ agent, onMissionCreated }: MissionCreatorProps) => {
         // Clear form
         setTitle("");
         setDescription("");
+        setInstructions("");
         setReward(10);
         setMetadataUrl("");
       }
@@ -81,6 +84,17 @@ const MissionCreator = ({ agent, onMissionCreated }: MissionCreatorProps) => {
             className="min-h-[100px]"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
+          />
+        </div>
+        
+        <div className="space-y-2">
+          <Label htmlFor="mission-instructions">Detailed Instructions</Label>
+          <Textarea
+            id="mission-instructions"
+            placeholder="Provide specific step-by-step instructions for completing the task..."
+            className="min-h-[120px]"
+            value={instructions}
+            onChange={(e) => setInstructions(e.target.value)}
           />
         </div>
         
