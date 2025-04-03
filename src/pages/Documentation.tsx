@@ -68,14 +68,14 @@ const Documentation = () => {
             <Link to="/">
               <Button variant="ghost" size="sm" className="gap-2">
                 <ArrowLeft className="h-4 w-4" />
-                Retour à l'accueil
+                Back to Home
               </Button>
             </Link>
           </div>
         </div>
         <h1 className="text-3xl font-bold mt-4">Documentation</h1>
         <p className="text-muted-foreground">
-          Guide complet pour comprendre et utiliser Agent AI Connect Flow
+          Complete guide to understanding and using Agent AI Connect Flow
         </p>
       </header>
 
@@ -88,7 +88,7 @@ const Documentation = () => {
             </TabsTrigger>
             <TabsTrigger value="examples" className="flex items-center gap-2">
               <Code className="h-4 w-4" />
-              <span>Exemples de Code</span>
+              <span>Code Examples</span>
             </TabsTrigger>
           </TabsList>
         </div>
