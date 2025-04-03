@@ -67,7 +67,7 @@ const LogsTab = () => {
     setIsRefreshing(true);
     setTimeout(() => {
       // In a real app, this would fetch fresh logs from a service
-      const newLog = { 
+      const newLog: LogEntry = { 
         id: logs.length + 1, 
         level: "info", 
         message: "Logs refreshed at " + new Date().toLocaleTimeString(), 
@@ -91,7 +91,7 @@ const LogsTab = () => {
       description: "A test error has been logged"
     });
     
-    const errorLog = { 
+    const errorLog: LogEntry = { 
       id: logs.length + 1, 
       level: "error", 
       message: "Simulated error for testing", 
