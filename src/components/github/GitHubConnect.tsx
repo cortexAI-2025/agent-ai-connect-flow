@@ -21,17 +21,17 @@ const GitHubConnect = ({ syncStatus, onConnect, onDisconnect, onSync }: GitHubCo
   const handleConnect = async () => {
     setIsConnecting(true);
     try {
-      // Dans une implémentation réelle, ceci redirigerait vers le flow d'authentification GitHub
-      await new Promise(resolve => setTimeout(resolve, 1000)); // Simuler un appel API
+      // In a real implementation, this would redirect to the GitHub authentication flow
+      await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate an API call
       onConnect();
       toast({
-        title: "Connexion réussie",
-        description: "Votre compte GitHub est maintenant connecté.",
+        title: "Connection successful",
+        description: "Your GitHub account is now connected.",
       });
     } catch (error) {
       toast({
-        title: "Erreur de connexion",
-        description: "Impossible de se connecter à GitHub.",
+        title: "Connection error",
+        description: "Unable to connect to GitHub.",
         variant: "destructive",
       });
     } finally {
@@ -41,17 +41,17 @@ const GitHubConnect = ({ syncStatus, onConnect, onDisconnect, onSync }: GitHubCo
 
   const handleDisconnect = async () => {
     try {
-      // Dans une implémentation réelle, ceci déconnecterait le compte GitHub
+      // In a real implementation, this would disconnect the GitHub account
       await new Promise(resolve => setTimeout(resolve, 500)); 
       onDisconnect();
       toast({
-        title: "Déconnexion réussie",
-        description: "Votre compte GitHub a été déconnecté.",
+        title: "Disconnection successful",
+        description: "Your GitHub account has been disconnected.",
       });
     } catch (error) {
       toast({
-        title: "Erreur de déconnexion",
-        description: "Impossible de déconnecter votre compte GitHub.",
+        title: "Disconnection error",
+        description: "Unable to disconnect your GitHub account.",
         variant: "destructive",
       });
     }
@@ -60,19 +60,19 @@ const GitHubConnect = ({ syncStatus, onConnect, onDisconnect, onSync }: GitHubCo
   const handleSync = async (repoId?: string) => {
     setIsSyncing(true);
     try {
-      // Dans une implémentation réelle, ceci synchroniserait avec GitHub
+      // In a real implementation, this would synchronize with GitHub
       await new Promise(resolve => setTimeout(resolve, 1500));
       onSync(repoId);
       toast({
-        title: "Synchronisation réussie",
+        title: "Synchronization successful",
         description: repoId 
-          ? "Le dépôt a été synchronisé avec succès."
-          : "Tous les dépôts ont été synchronisés avec succès.",
+          ? "The repository was successfully synchronized."
+          : "All repositories were successfully synchronized.",
       });
     } catch (error) {
       toast({
-        title: "Erreur de synchronisation",
-        description: "Impossible de synchroniser avec GitHub.",
+        title: "Synchronization error",
+        description: "Unable to synchronize with GitHub.",
         variant: "destructive",
       });
     } finally {
@@ -85,17 +85,17 @@ const GitHubConnect = ({ syncStatus, onConnect, onDisconnect, onSync }: GitHubCo
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <Github className="h-5 w-5" />
-          Intégration GitHub
+          GitHub Integration
         </CardTitle>
         <CardDescription>
-          Synchronisez votre projet avec un dépôt GitHub pour un contrôle de version plus avancé.
+          Synchronize your project with a GitHub repository for advanced version control.
         </CardDescription>
       </CardHeader>
       <CardContent>
         {!syncStatus?.connected ? (
           <div className="flex flex-col gap-4">
             <p className="text-sm text-muted-foreground">
-              Connectez votre compte GitHub pour commencer à synchroniser vos projets.
+              Connect your GitHub account to start synchronizing your projects.
             </p>
             <Button 
               onClick={handleConnect} 
@@ -103,18 +103,18 @@ const GitHubConnect = ({ syncStatus, onConnect, onDisconnect, onSync }: GitHubCo
               className="flex items-center gap-2"
             >
               <Github className="h-4 w-4" />
-              {isConnecting ? "Connexion en cours..." : "Se connecter à GitHub"}
+              {isConnecting ? "Connecting..." : "Connect to GitHub"}
             </Button>
           </div>
         ) : (
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="font-medium">Compte connecté</p>
+                <p className="font-medium">Account connected</p>
                 <p className="text-sm text-muted-foreground">
                   {syncStatus.lastSynced 
-                    ? `Dernière synchronisation: ${new Date(syncStatus.lastSynced).toLocaleString()}` 
-                    : "Pas encore synchronisé"}
+                    ? `Last synchronization: ${new Date(syncStatus.lastSynced).toLocaleString()}` 
+                    : "Not yet synchronized"}
                 </p>
               </div>
               <Button 
@@ -125,13 +125,13 @@ const GitHubConnect = ({ syncStatus, onConnect, onDisconnect, onSync }: GitHubCo
                 className="flex items-center gap-2"
               >
                 <RefreshCw className={`h-4 w-4 ${isSyncing ? 'animate-spin' : ''}`} />
-                {isSyncing ? "Synchronisation..." : "Synchroniser tout"}
+                {isSyncing ? "Synchronizing..." : "Sync all"}
               </Button>
             </div>
             
             {syncStatus.repos && syncStatus.repos.length > 0 && (
               <div className="space-y-2">
-                <h4 className="text-sm font-medium">Dépôts disponibles</h4>
+                <h4 className="text-sm font-medium">Available repositories</h4>
                 <ul className="space-y-2">
                   {syncStatus.repos.map(repo => (
                     <li key={repo.id} className="flex items-center justify-between rounded-md border p-3">
@@ -163,13 +163,13 @@ const GitHubConnect = ({ syncStatus, onConnect, onDisconnect, onSync }: GitHubCo
             variant="outline" 
             onClick={handleDisconnect}
           >
-            Déconnecter
+            Disconnect
           </Button>
           <Button 
             variant="default"
             onClick={() => window.open("https://github.com/settings/applications", "_blank")}
           >
-            Gérer sur GitHub
+            Manage on GitHub
           </Button>
         </CardFooter>
       )}

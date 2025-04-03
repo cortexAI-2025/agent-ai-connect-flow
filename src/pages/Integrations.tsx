@@ -7,7 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter }
 import { Button } from "@/components/ui/button";
 import { Database, LinkIcon, ExternalLink, Mail, Phone, Globe } from "lucide-react";
 
-// Données simulées pour la démonstration
+// Simulated data for demonstration
 const mockGitHubRepos = [
   {
     id: "1",
@@ -77,19 +77,19 @@ const Integrations = () => {
     <div className="container py-6 min-h-screen">
       <header className="text-center mb-8 animate-fade-in">
         <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-600 via-indigo-500 to-blue-500 bg-clip-text text-transparent">
-          Intégrations
+          Integrations
         </h1>
         <p className="text-muted-foreground mt-2 max-w-lg mx-auto">
-          Connectez votre application à des services externes pour étendre ses fonctionnalités
+          Connect your application to external services to extend its functionality
         </p>
       </header>
 
       <div className="max-w-3xl mx-auto">
         <Card className="mb-6">
           <CardHeader>
-            <CardTitle>Agent développé par AIWorkPay SAS</CardTitle>
+            <CardTitle>Agent developed by AIWorkPay SAS</CardTitle>
             <CardDescription>
-              Une solution innovante pour connecter des agents autonomes à des services de freelances
+              An innovative solution to connect autonomous agents with freelance services
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -112,7 +112,7 @@ const Integrations = () => {
               </div>
               <Button asChild variant="outline">
                 <a href="https://aiworkpay.tech" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                  <span>Visiter le site</span>
+                  <span>Visit website</span>
                   <ExternalLink className="h-4 w-4" />
                 </a>
               </Button>
@@ -124,8 +124,8 @@ const Integrations = () => {
           <div className="flex justify-center mb-6">
             <TabsList className="bg-accent/50 backdrop-blur-sm">
               <TabsTrigger value="github" className="transition-all duration-200">GitHub</TabsTrigger>
-              <TabsTrigger value="database" className="transition-all duration-200">Base de données</TabsTrigger>
-              <TabsTrigger value="other" className="transition-all duration-200">Autres services</TabsTrigger>
+              <TabsTrigger value="database" className="transition-all duration-200">Database</TabsTrigger>
+              <TabsTrigger value="other" className="transition-all duration-200">Other services</TabsTrigger>
             </TabsList>
           </div>
           <TabsContent value="github" className="animate-fade-in">
@@ -144,37 +144,37 @@ const Integrations = () => {
                   Supabase Integration
                 </CardTitle>
                 <CardDescription>
-                  Connectez votre propre base de données Supabase pour étendre les fonctionnalités de votre application
+                  Connect your own Supabase database to extend your application's functionality
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="bg-muted/30 rounded-lg p-6">
-                  <h3 className="text-lg font-medium mb-3">Pourquoi Supabase?</h3>
+                  <h3 className="text-lg font-medium mb-3">Why Supabase?</h3>
                   <ul className="space-y-2 text-sm list-disc pl-5">
-                    <li>Base de données PostgreSQL complète</li>
-                    <li>Authentification des utilisateurs</li>
-                    <li>Stockage de fichiers</li>
-                    <li>Fonctions Edge et API</li>
-                    <li>Interface d'administration simple</li>
+                    <li>Complete PostgreSQL database</li>
+                    <li>User authentication</li>
+                    <li>File storage</li>
+                    <li>Edge functions and API</li>
+                    <li>Simple admin interface</li>
                   </ul>
                 </div>
                 
                 <div className="bg-muted/30 rounded-lg p-6">
-                  <h3 className="text-lg font-medium mb-3">Comment connecter Supabase</h3>
+                  <h3 className="text-lg font-medium mb-3">How to connect Supabase</h3>
                   <p className="text-sm mb-4">
-                    Lovable offre une intégration native avec Supabase. Pour l'activer:
+                    Lovable offers native integration with Supabase. To activate it:
                   </p>
                   <ol className="space-y-2 text-sm list-decimal pl-5 mb-6">
-                    <li>Cliquez sur le menu Supabase en haut à droite de l'interface</li>
-                    <li>Connectez-vous à votre compte Supabase</li> 
-                    <li>Sélectionnez votre projet ou créez-en un nouveau</li>
-                    <li>Suivez les instructions pour compléter l'intégration</li>
+                    <li>Click on the Supabase menu at the top right of the interface</li>
+                    <li>Log in to your Supabase account</li> 
+                    <li>Select your project or create a new one</li>
+                    <li>Follow the instructions to complete the integration</li>
                   </ol>
                   
                   <div className="flex justify-center gap-4 mt-4">
                     <Button className="gap-2">
                       <LinkIcon className="h-4 w-4" />
-                      Connecter Supabase
+                      Connect Supabase
                     </Button>
                     <Button variant="outline" className="gap-2" asChild>
                       <a href="https://docs.lovable.dev/integrations/supabase/" target="_blank" rel="noopener noreferrer">
@@ -189,9 +189,9 @@ const Integrations = () => {
           </TabsContent>
           <TabsContent value="other" className="animate-fade-in">
             <div className="bg-muted/50 rounded-lg p-12 text-center">
-              <h3 className="text-xl font-medium mb-2">Plus d'intégrations à venir</h3>
+              <h3 className="text-xl font-medium mb-2">More integrations coming soon</h3>
               <p className="text-muted-foreground">
-                D'autres intégrations avec des services externes seront disponibles prochainement.
+                Additional integrations with external services will be available soon.
               </p>
             </div>
           </TabsContent>
