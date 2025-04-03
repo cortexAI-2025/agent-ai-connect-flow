@@ -1,0 +1,156 @@
+
+import { useState } from "react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { AlertCircle, RefreshCw } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+import { ScrollArea } from "@/components/ui/scroll-area";
+
+// Types for the logs
+export interface LogEntry {
+  id: number;
+  level: "info" | "warn" | "error";
+  message: string;
+  timestamp: string;
+}
+
+// Mock data for demonstration
+const mockLogs: LogEntry[] = [
+  { id: 1, level: "info", message: "Application started", timestamp: new Date().toISOString() },
+  { id: 2, level: "warn", message: "API rate limit approaching", timestamp: new Date().toISOString() },
+  { id: 3, level: "error", message: "Failed to connect to database", timestamp: new Date().toISOString() },
+  { id: 4, level: "info", message: "User authentication successful", timestamp: new Date().toISOString() }
+];
+
+const LogsTab = () => {
+  const { toast } = useToast();
+  const [logs, setLogs] = useState<LogEntry[]>(mockLogs);
+  const [isRefreshing, setIsRefreshing] = useState(false);
+
+  const handleClearLogs = () => {
+    setLogs([]);
+    toast({
+      title: "Logs cleared",
+      description: "All debug logs have been cleared"
+    });
+  };
+
+  const handleRefresh = () => {
+    setIsRefreshing(true);
+    setTimeout(() => {
+      // In a real app, this would fetch fresh logs from a service
+      setLogs([
+        ...logs,
+        { 
+          id: logs.length + 1, 
+          level: "info", 
+          message: "Logs refreshed at " + new Date().toLocaleTimeString(), 
+          timestamp: new Date().toISOString() 
+        }
+      ]);
+      setIsRefreshing(false);
+      toast({
+        title: "Logs refreshed",
+        description: "Debug logs have been updated"
+      });
+    }, 800);
+  };
+
+  const simulateError = () => {
+    toast({
+      variant: "destructive",
+      title: "Error simulated",
+      description: "A test error has been logged"
+    });
+    setLogs([
+      ...logs,
+      { 
+        id: logs.length + 1, 
+        level: "error", 
+        message: "Simulated error for testing", 
+        timestamp: new Date().toISOString() 
+      }
+    ]);
+  };
+
+  return (
+    <div className="space-y-4">
+      <div className="flex justify-between items-center">
+        <h2 className="text-xl font-semibold">Application Logs</h2>
+        <div className="flex gap-2">
+          <Button 
+            variant="outline" 
+            size="sm" 
+            onClick={handleRefresh}
+            disabled={isRefreshing}
+          >
+            <RefreshCw className={`h-4 w-4 mr-2 ${isRefreshing ? 'animate-spin' : ''}`} />
+            Refresh
+          </Button>
+          <Button 
+            variant="outline" 
+            size="sm" 
+            onClick={handleClearLogs}
+          >
+            Clear
+          </Button>
+          <Button 
+            variant="destructive" 
+            size="sm" 
+            onClick={simulateError}
+          >
+            <AlertCircle className="h-4 w-4 mr-2" />
+            Simulate Error
+          </Button>
+        </div>
+      </div>
+
+      <Card>
+        <CardHeader className="pb-2">
+          <CardTitle>Log Events</CardTitle>
+          <CardDescription>
+            Recent system logs and events
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ScrollArea className="h-[400px] w-full pr-4">
+            {logs.length > 0 ? (
+              <div className="space-y-3">
+                {logs.map((log) => (
+                  <div 
+                    key={log.id} 
+                    className={`p-3 rounded-md border ${
+                      log.level === 'error' 
+                        ? 'bg-red-50 border-red-200 text-red-800' 
+                        : log.level === 'warn'
+                          ? 'bg-yellow-50 border-yellow-200 text-yellow-800'
+                          : 'bg-blue-50 border-blue-200 text-blue-800'
+                    }`}
+                  >
+                    <div className="flex justify-between items-start">
+                      <span className="font-medium">
+                        {log.level.toUpperCase()}
+                      </span>
+                      <span className="text-xs opacity-70">
+                        {new Date(log.timestamp).toLocaleString()}
+                      </span>
+                    </div>
+                    <div className="mt-1">
+                      {log.message}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-10 text-muted-foreground">
+                No logs available
+              </div>
+            )}
+          </ScrollArea>
+        </CardContent>
+      </Card>
+    </div>
+  );
+};
+
+export default LogsTab;
