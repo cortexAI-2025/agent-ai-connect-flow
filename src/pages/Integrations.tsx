@@ -3,6 +3,7 @@ import { useState } from "react";
 import { GitHubSyncStatus } from "@/types";
 import GitHubConnect from "@/components/github/GitHubConnect";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import DatabaseTab from "@/components/debug/DatabaseTab";
 
 // Données simulées pour la démonstration
 const mockGitHubRepos = [
@@ -86,6 +87,7 @@ const Integrations = () => {
           <div className="flex justify-center mb-6">
             <TabsList className="bg-accent/50 backdrop-blur-sm">
               <TabsTrigger value="github" className="transition-all duration-200">GitHub</TabsTrigger>
+              <TabsTrigger value="database" className="transition-all duration-200">Base de données</TabsTrigger>
               <TabsTrigger value="other" className="transition-all duration-200">Autres services</TabsTrigger>
             </TabsList>
           </div>
@@ -96,6 +98,9 @@ const Integrations = () => {
               onDisconnect={handleGitHubDisconnect}
               onSync={handleGitHubSync}
             />
+          </TabsContent>
+          <TabsContent value="database" className="animate-fade-in">
+            <DatabaseTab />
           </TabsContent>
           <TabsContent value="other" className="animate-fade-in">
             <div className="bg-muted/50 rounded-lg p-12 text-center">
