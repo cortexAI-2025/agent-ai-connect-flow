@@ -1,136 +1,136 @@
 
 # Documentation: Agent AI Connect Flow
 
-## Vue d'ensemble
+## Overview
 
-Agent AI Connect Flow est une plateforme qui vous permet de créer et de gérer des agents IA autonomes capables d'interagir avec des freelances via AIWorkPay et de gérer les paiements via Stripe. Cette documentation explique comment utiliser la plateforme et ses principales fonctionnalités.
+Agent AI Connect Flow is a platform that allows you to create and manage autonomous AI agents capable of interacting with freelancers through AIWorkPay and managing payments via Stripe. This documentation explains how to use the platform and its main features.
 
-## Table des matières
+## Table of Contents
 
-1. [Création d'un agent](#création-dun-agent)
-2. [Tableau de bord de l'agent](#tableau-de-bord-de-lagent)
-3. [Création de missions](#création-de-missions)
-4. [Centre d'automatisation](#centre-dautomatisation)
-5. [Intégrations](#intégrations)
-6. [Base de connaissances](#base-de-connaissances)
-7. [Exemples pratiques](#exemples-pratiques)
+1. [Creating an Agent](#creating-an-agent)
+2. [Agent Dashboard](#agent-dashboard)
+3. [Creating Missions](#creating-missions)
+4. [Automation Center](#automation-center)
+5. [Integrations](#integrations)
+6. [Knowledge Base](#knowledge-base)
+7. [Practical Examples](#practical-examples)
 
-## Création d'un agent
+## Creating an Agent
 
-Pour créer un nouvel agent autonome:
+To create a new autonomous agent:
 
-1. Accédez à la page d'accueil de l'application
-2. Remplissez le formulaire de création d'agent avec:
-   - **Nom de l'agent**: Un nom descriptif (ex: "Agent de scraping web")
-   - **Budget mensuel**: Montant maximum que l'agent peut dépenser (ex: 500 EUR)
-   - **Permissions**: Sélectionnez les permissions accordées à l'agent:
-     - `create_charge`: Autoriser l'agent à créer des frais sur le compte Stripe
-     - `approve_payouts`: Autoriser l'agent à approuver les paiements aux freelances
-     - `create_mission`: Autoriser l'agent à créer de nouvelles missions
+1. Go to the application's home page
+2. Fill out the agent creation form with:
+   - **Agent Name**: A descriptive name (e.g., "Web Scraping Agent")
+   - **Monthly Budget**: Maximum amount the agent can spend (e.g., 500 USD)
+   - **Permissions**: Select the permissions granted to the agent:
+     - `create_charge`: Allow the agent to create charges on the Stripe account
+     - `approve_payouts`: Allow the agent to approve payments to freelancers
+     - `create_mission`: Allow the agent to create new missions
 
-**Bonnes pratiques**: 
-- Attribuez un nom descriptif qui indique clairement la fonction de l'agent
-- Commencez avec un budget limité pour tester le comportement de l'agent
-- N'accordez que les permissions strictement nécessaires à la fonction de l'agent
+**Best Practices**: 
+- Assign a descriptive name that clearly indicates the agent's function
+- Start with a limited budget to test the agent's behavior
+- Only grant permissions strictly necessary for the agent's function
 
-## Tableau de bord de l'agent
+## Agent Dashboard
 
-Une fois l'agent créé, vous accéderez à son tableau de bord qui affiche:
+Once the agent is created, you will access its dashboard that displays:
 
-- **Informations sur l'agent**: Nom, ID, compte Stripe associé
-- **Budget**: Budget mensuel et solde restant
-- **Permissions**: Liste des permissions accordées
-- **Statistiques des missions**: Nombre total et nombre de missions terminées
+- **Agent Information**: Name, ID, associated Stripe account
+- **Budget**: Monthly budget and remaining balance
+- **Permissions**: List of granted permissions
+- **Mission Statistics**: Total number and number of completed missions
 
-Ce tableau de bord est votre centre de contrôle pour surveiller l'activité de l'agent et l'utilisation du budget.
+This dashboard is your control center for monitoring agent activity and budget usage.
 
-## Création de missions
+## Creating Missions
 
-Dans l'onglet "Tableau de bord de l'agent", vous pouvez créer de nouvelles missions pour les freelances:
+In the "Agent Dashboard" tab, you can create new missions for freelancers:
 
-1. Remplissez le formulaire "Créer une nouvelle mission" avec:
-   - **Titre de la mission**: Description concise de la tâche
-   - **Description**: Explication détaillée de la mission
-   - **Instructions détaillées**: Étapes précises pour accomplir la tâche
-   - **Récompense**: Montant en EUR à payer au freelance
-   - **URL cible** (facultatif): URL pertinente pour la mission
+1. Fill out the "Create a New Mission" form with:
+   - **Mission Title**: Concise description of the task
+   - **Description**: Detailed explanation of the mission
+   - **Detailed Instructions**: Precise steps to accomplish the task
+   - **Reward**: Amount in USD to pay the freelancer
+   - **Target URL** (optional): Relevant URL for the mission
 
-Après la création, la mission sera publiée sur AIWorkPay où les freelances pourront la consulter et y répondre.
+After creation, the mission will be published on AIWorkPay where freelancers can view and respond to it.
 
-**Exemple de mission**:
-- **Titre**: "Extraire des données de produits d'un site e-commerce"
-- **Description**: "Extraire les noms, les prix et les images de 100 produits sur example.com"
-- **Instructions**: "Utilisez un outil de scraping pour extraire les données des pages produits. Fournissez les données dans un format JSON structuré..."
-- **Récompense**: 15.00 EUR
-- **URL cible**: "https://example.com/produits"
+**Mission Example**:
+- **Title**: "Extract Product Data from E-commerce Site"
+- **Description**: "Extract names, prices, and images of 100 products on example.com"
+- **Instructions**: "Use a scraping tool to extract data from product pages. Provide the data in a structured JSON format..."
+- **Reward**: 15.00 USD
+- **Target URL**: "https://example.com/products"
 
-## Centre d'automatisation
+## Automation Center
 
-Dans l'onglet "Centre d'automatisation", vous pouvez configurer des comportements automatisés pour votre agent:
+In the "Automation Center" tab, you can configure automated behaviors for your agent:
 
-- **Validation automatique des missions terminées**: Valide automatiquement les missions marquées comme terminées
-- **Traitement automatique des paiements**: Effectue les paiements dès qu'une mission est validée
+- **Automatic Mission Validation**: Automatically validates missions marked as completed
+- **Automatic Payment Processing**: Processes payments as soon as a mission is validated
 
-Le journal d'activité affiche les actions automatisées effectuées par l'agent en temps réel.
+The activity log displays automated actions performed by the agent in real-time.
 
-## Intégrations
+## Integrations
 
-L'application propose plusieurs intégrations:
+The application offers several integrations:
 
-- **AIWorkPay**: Connecte l'agent au réseau de freelances d'AIWorkPay
-- **Supabase**: Permet d'étendre les fonctionnalités avec une base de données
-- **GitHub**: Facilite la synchronisation du code avec un dépôt GitHub
+- **AIWorkPay**: Connects the agent to AIWorkPay's freelancer network
+- **Supabase**: Allows you to extend functionality with a database
+- **GitHub**: Facilitates code synchronization with a GitHub repository
 
-## Base de connaissances
+## Knowledge Base
 
-La section "Connaissances du projet" vous permet de stocker des informations importantes:
+The "Project Knowledge" section allows you to store important information:
 
-1. Accédez à cette section via le bouton "Connaissances du projet" en haut de l'interface
-2. Créez de nouvelles entrées avec un titre et un contenu
-3. Consultez et modifiez les entrées existantes
+1. Access this section via the "Project Knowledge" button at the top of the interface
+2. Create new entries with a title and content
+3. View and edit existing entries
 
-Cette fonction est utile pour documenter des processus, stocker des informations techniques ou partager des instructions spécifiques.
+This function is useful for documenting processes, storing technical information, or sharing specific instructions.
 
-## Exemples pratiques
+## Practical Examples
 
-### Exemple 1: Agent de génération de contenu
+### Example 1: Content Generation Agent
 
-**Configuration de l'agent**:
-- **Nom**: "Générateur de contenu"
-- **Budget**: 300 EUR/mois
+**Agent Configuration**:
+- **Name**: "Content Generator"
+- **Budget**: 300 USD/month
 - **Permissions**: create_mission, approve_payouts
 
-**Création d'une mission**:
-- **Titre**: "Rédiger un article de blog sur l'IA"
-- **Description**: "Créer un article de 1500 mots sur les applications pratiques de l'IA"
-- **Récompense**: 25 EUR
+**Mission Creation**:
+- **Title**: "Write a Blog Post About AI"
+- **Description**: "Create a 1500-word article on practical applications of AI"
+- **Reward**: 25 USD
 
-**Automatisation**:
-- Activer la validation automatique pour un traitement rapide
+**Automation**:
+- Enable automatic validation for rapid processing
 
-### Exemple 2: Agent d'analyse de données
+### Example 2: Data Analysis Agent
 
-**Configuration de l'agent**:
-- **Nom**: "Analyseur de données"
-- **Budget**: 800 EUR/mois
+**Agent Configuration**:
+- **Name**: "Data Analyzer"
+- **Budget**: 800 USD/month
 - **Permissions**: create_charge, approve_payouts, create_mission
 
-**Création d'une mission**:
-- **Titre**: "Analyser les données de feedback client"
-- **Description**: "Catégoriser et résumer 500 entrées de feedback client"
-- **Récompense**: 30 EUR
+**Mission Creation**:
+- **Title**: "Analyze Customer Feedback Data"
+- **Description**: "Categorize and summarize 500 customer feedback entries"
+- **Reward**: 30 USD
 
-**Automatisation**:
-- Activer la validation et le paiement automatiques
+**Automation**:
+- Enable automatic validation and payment
 
-## Conseils pour une utilisation optimale
+## Tips for Optimal Use
 
-1. **Commencez petit**: Débutez avec des missions simples et un budget limité
-2. **Surveillez régulièrement**: Consultez le tableau de bord pour suivre l'activité de l'agent
-3. **Itérez progressivement**: Ajustez les paramètres de l'agent en fonction des résultats
-4. **Documentation**: Utilisez la base de connaissances pour documenter les processus
-5. **Automatisation prudente**: N'activez l'automatisation complète qu'après avoir testé manuellement le processus
+1. **Start Small**: Begin with simple missions and a limited budget
+2. **Monitor Regularly**: Check the dashboard to track agent activity
+3. **Iterate Gradually**: Adjust agent parameters based on results
+4. **Documentation**: Use the knowledge base to document processes
+5. **Careful Automation**: Only enable full automation after manually testing the process
 
 ---
 
-Pour toute question ou assistance supplémentaire, contactez l'équipe AIWorkPay à contact@aiworkpay.tech ou visitez https://aiworkpay.tech.
+For any questions or additional assistance, contact the AIWorkPay team at contact@aiworkpay.tech or visit https://aiworkpay.tech.
