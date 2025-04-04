@@ -133,4 +133,4 @@ This function is useful for documenting processes, storing technical information
 
 ---
 
-For any questions or additional assistance, contact the AIWorkPay team at contact@aiworkpay.fr or visit https://aiworkpay.tech.
+For any questions or additional assistance, contact the AIWorkPay team at contact@aiworkpay.tech or visit https://aiworkpay.tech.

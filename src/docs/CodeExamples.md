@@ -1,39 +1,39 @@
 
-# Exemples de Code: Agent AI Connect Flow
+# Code Examples: Agent AI Connect Flow
 
-Ce document fournit des exemples de code pour illustrer comment utiliser les services AIWorkPay et Stripe dans votre application.
+This document provides code examples to illustrate how to use the AIWorkPay and Stripe services in your application.
 
-## Sommaire
+## Table of Contents
 
-1. [Création d'une mission via AIWorkPay](#création-dune-mission-via-aiworkpay)
-2. [Vérification du solde Stripe](#vérification-du-solde-stripe)
-3. [Validation d'une mission](#validation-dune-mission)
-4. [Traitement d'un paiement](#traitement-dun-paiement)
-5. [Exemples d'automatisation](#exemples-dautomatisation)
+1. [Creating a Mission via AIWorkPay](#creating-a-mission-via-aiworkpay)
+2. [Checking Stripe Balance](#checking-stripe-balance)
+3. [Validating a Mission](#validating-a-mission)
+4. [Processing a Payment](#processing-a-payment)
+5. [Automation Examples](#automation-examples)
 
-## Création d'une mission via AIWorkPay
+## Creating a Mission via AIWorkPay
 
-Voici comment créer une nouvelle mission en utilisant le service AIWorkPay:
+Here's how to create a new mission using the AIWorkPay service:
 
 ```typescript
 import { aiworkpayService } from "@/services/aiworkpayService";
 
-// Informations de l'agent
+// Agent information
 const agentId = "agent_123";
 const stripeAccountId = "acct_agent_456";
 
-// Données de la mission
+// Mission data
 const missionData = {
-  title: "Scraper des données produit",
-  description: "Extraire les informations de 100 produits sur example.com",
+  title: "Scrape product data",
+  description: "Extract information from 100 products on example.com",
   reward: 15.00,
   metadata: {
     url: "https://example.com/products",
-    instructions: "Utilisez un outil de scraping pour extraire nom, prix et images...",
+    instructions: "Use a scraping tool to extract name, price and images...",
   },
 };
 
-// Création de la mission
+// Creating the mission
 async function createNewMission() {
   try {
     const response = await aiworkpayService.createMission(
@@ -43,20 +43,20 @@ async function createNewMission() {
     );
     
     if (response.success && response.data) {
-      console.log("Mission créée avec succès:", response.data);
+      console.log("Mission created successfully:", response.data);
       return response.data;
     } else {
-      console.error("Échec de création de la mission:", response.error);
+      console.error("Failed to create mission:", response.error);
     }
   } catch (error) {
-    console.error("Erreur lors de la création de la mission:", error);
+    console.error("Error creating mission:", error);
   }
 }
 ```
 
-## Vérification du solde Stripe
+## Checking Stripe Balance
 
-Pour vérifier le solde restant d'un agent sur Stripe:
+To check an agent's remaining balance on Stripe:
 
 ```typescript
 import { stripeService } from "@/services/stripeService";
@@ -64,17 +64,17 @@ import { stripeService } from "@/services/stripeService";
 async function checkAgentBalance(agentId, stripeAccountId) {
   try {
     const balance = await stripeService.checkBalance(agentId, stripeAccountId);
-    console.log(`Solde actuel: $${balance.toFixed(2)}`);
+    console.log(`Current balance: $${balance.toFixed(2)}`);
     return balance;
   } catch (error) {
-    console.error("Erreur lors de la vérification du solde:", error);
+    console.error("Error checking balance:", error);
   }
 }
 ```
 
-## Validation d'une mission
+## Validating a Mission
 
-Pour valider une mission terminée:
+To validate a completed mission:
 
 ```typescript
 import { aiworkpayService } from "@/services/aiworkpayService";
@@ -84,22 +84,22 @@ async function validateCompletedMission(missionId, isApproved = true) {
     const response = await aiworkpayService.validateMission(missionId, isApproved);
     
     if (response.success) {
-      console.log(`Mission ${missionId} ${isApproved ? 'validée' : 'rejetée'} avec succès`);
+      console.log(`Mission ${missionId} ${isApproved ? 'validated' : 'rejected'} successfully`);
       return true;
     } else {
-      console.error("Échec de la validation:", response.error);
+      console.error("Validation failed:", response.error);
       return false;
     }
   } catch (error) {
-    console.error("Erreur lors de la validation de la mission:", error);
+    console.error("Error validating mission:", error);
     return false;
   }
 }
 ```
 
-## Traitement d'un paiement
+## Processing a Payment
 
-Pour traiter un paiement après validation d'une mission:
+To process a payment after mission validation:
 
 ```typescript
 import { stripeService } from "@/services/stripeService";
@@ -113,37 +113,37 @@ async function processMissionPayment(missionId, amount, stripeAccountId) {
     );
     
     if (result.success) {
-      console.log(`Paiement de $${amount} traité avec succès pour la mission ${missionId}`);
+      console.log(`Payment of $${amount} processed successfully for mission ${missionId}`);
       return true;
     } else {
-      console.error("Échec du paiement:", result.error);
+      console.error("Payment failed:", result.error);
       return false;
     }
   } catch (error) {
-    console.error("Erreur lors du traitement du paiement:", error);
+    console.error("Error processing payment:", error);
     return false;
   }
 }
 ```
 
-## Exemples d'automatisation
+## Automation Examples
 
-Exemple d'implémentation d'un flux d'automatisation complet:
+Example of implementing a complete automation flow:
 
 ```typescript
-// Fonction pour gérer automatiquement les missions
+// Function to automatically process missions
 async function autoProcessMissions(agent, missions) {
-  // Filtrer les missions terminées mais non validées
+  // Filter completed but not validated missions
   const completedMissions = missions.filter(m => m.status === "completed");
   
   for (const mission of completedMissions) {
-    console.log(`Traitement automatique de la mission: ${mission.title}`);
+    console.log(`Automatic processing of mission: ${mission.title}`);
     
-    // 1. Valider la mission
+    // 1. Validate the mission
     const isValidated = await validateCompletedMission(mission.id, true);
     
     if (isValidated) {
-      // 2. Traiter le paiement
+      // 2. Process the payment
       const isPaid = await processMissionPayment(
         mission.id,
         mission.reward,
@@ -151,21 +151,21 @@ async function autoProcessMissions(agent, missions) {
       );
       
       if (isPaid) {
-        console.log(`Mission ${mission.id} validée et payée avec succès`);
+        console.log(`Mission ${mission.id} validated and paid successfully`);
       }
     }
   }
 }
 
-// Exemple d'utilisation avec un intervalle
+// Example of usage with an interval
 function startAutomation(agent, getMissions) {
   setInterval(async () => {
     const currentMissions = await getMissions(agent.id);
     await autoProcessMissions(agent, currentMissions);
-  }, 60000); // Vérifier toutes les minutes
+  }, 60000); // Check every minute
 }
 ```
 
-Ces exemples illustrent la manière dont vous pouvez interagir programmatiquement avec les services AIWorkPay et Stripe pour automatiser la gestion des missions et des paiements.
+These examples illustrate how you can programmatically interact with the AIWorkPay and Stripe services to automate mission management and payments.
 
-Pour plus d'informations sur l'API AIWorkPay, visitez [https://aiworkpay.tech](https://aiworkpay.tech).
+For more information about the AIWorkPay API, visit [https://aiworkpay.tech](https://aiworkpay.tech).
