@@ -36,7 +36,7 @@ const DocumentationTabs = ({
           </TabsTrigger>
           <TabsTrigger value="examples" className="flex items-center gap-2">
             <Code className="h-4 w-4" />
-            <span>Code Examples</span>
+            <span>Exemples de code</span>
           </TabsTrigger>
         </TabsList>
       </div>

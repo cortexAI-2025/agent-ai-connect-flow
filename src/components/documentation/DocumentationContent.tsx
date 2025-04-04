@@ -21,7 +21,7 @@ const DocumentationContent = () => {
       .catch(error => {
         console.error("Error loading agent documentation:", error);
         // Fallback to empty content
-        setAgentDocumentation("# Documentation not available\n\nPlease try again later.");
+        setAgentDocumentation("# Documentation non disponible\n\nVeuillez réessayer plus tard.");
       });
 
     // Fetch code examples
@@ -31,7 +31,7 @@ const DocumentationContent = () => {
       .catch(error => {
         console.error("Error loading code examples:", error);
         // Fallback to empty content
-        setCodeExamples("# Code examples not available\n\nPlease try again later.");
+        setCodeExamples("# Exemples de code non disponibles\n\nVeuillez réessayer plus tard.");
       });
   }, []);
 

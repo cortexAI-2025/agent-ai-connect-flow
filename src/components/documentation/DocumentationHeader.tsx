@@ -15,14 +15,14 @@ const DocumentationHeader = () => {
           <Link to="/">
             <Button variant="ghost" size="sm" className="gap-2">
               <ArrowLeft className="h-4 w-4" />
-              Back to Home
+              Retour à l'accueil
             </Button>
           </Link>
         </div>
       </div>
       <h1 className="text-3xl font-bold mt-4">Documentation</h1>
       <p className="text-muted-foreground">
-        Complete guide to understanding and using Agent AI Connect Flow
+        Guide complet pour comprendre et utiliser Agent AI Connect Flow
       </p>
     </header>
   );
